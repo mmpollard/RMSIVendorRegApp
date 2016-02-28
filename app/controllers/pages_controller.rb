@@ -5,4 +5,5 @@ class PagesController < ApplicationController
   
   def readme
     @greeting = 'Welcome to the RMSI Registration page'
+  end
 end
