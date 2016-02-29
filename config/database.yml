@@ -1,23 +1,33 @@
 default: &default
-  adapter: postgresql
+  adapter: sqlite3
   encoding: unicode
   pool: 5
   username: <%= ENV['USERNAME'] %>
   password: <%= ENV['PASSWORD'] %>
   host:     <%= ENV['IP'] %>
+  
 development:
   <<: *default
-  database: RMSIVendorRegistrationApp_development
+  database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test: &test
   <<: *default
-  database: RMSIVendorRegistrationApp_test
+  database: db/test.sqlite3
 
 production:
   <<: *default
+  database: db/production.sqlite3
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['USERNAME'] %>
+  password: <%= ENV['PASSWORD'] %>
+  host:     <%= ENV['IP'] %>
   database: RMSIVendorRegistrationApp_production
 
 cucumber:
