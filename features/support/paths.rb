@@ -15,7 +15,10 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-
+    when /^the food\s?page$/
+      '/food'
+    when /^the nonfood\s?page$/
+      '/nonfood'
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #

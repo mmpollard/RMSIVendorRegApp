@@ -5,6 +5,10 @@ Rails.application.routes.draw do
   
   root 'pages#home'
   
+  get '/food' => 'pages#food'
+  
+  get '/nonfood' => 'pages#nonfood'
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
