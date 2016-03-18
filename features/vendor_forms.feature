@@ -20,3 +20,9 @@ Scenario: Dropdown equipment rentals
   When I go to the food page
   Then I should see "Equipment Rental (Optional)"
   And I should see the following dropdowns: 6' table ($10), Folding Chair ($5), 10'x10' Food Service Tent: ($110), 11' Market Umbrella ($50)
+  
+  
+Scenario: File upload fields
+  When I go to the food page
+  Then I should see "Registration Forms"
+  And I should see the following forms: Food facility operator form:, Copy of contract for commercial kitchen used to prepare food:, DD214
