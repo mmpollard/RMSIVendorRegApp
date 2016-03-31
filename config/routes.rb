@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   
   get '/food' => 'pages#food'
   
-  get '/nonfood' => 'pages#nonfood'
+  get '/commercial' => 'pages#commercial'
   
   get '/retail' => 'pages#retail'
   
