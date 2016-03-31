@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   
   get '/retail' => 'pages#retail'
   
+  get '/nonprofit' => 'pages#nonprofit'
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
