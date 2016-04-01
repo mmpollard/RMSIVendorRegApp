@@ -17,8 +17,12 @@ module NavigationHelpers
       '/'
     when /^the food\s?page$/
       '/food'
-    when /^the nonfood\s?page$/
-      '/nonfood'
+    when /^the retail\s?page$/
+      '/retail'
+    when /^the nonprofit\s?page$/
+      '/nonprofit'
+    when /^the commercialInfo\s?page$/
+      '/commercial'      
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:
     #
