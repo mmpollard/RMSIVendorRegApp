@@ -10,11 +10,20 @@ Scenario: view the food vendor form page
   And I should see the following buttons: Continue
   
 
-Scenario: view the nonfood vendor form page
-  When I go to the nonfood page
+Scenario: view the retail vendor form page
+  When I go to the retail page
   Then I should see the following fields: Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID
   And I should see the following buttons: Continue
   
+Scenario: view the nonprofit vendor form page
+  When I go to the nonprofit page
+  Then I should see the following fields: Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website
+  And I should see the following buttons: Continue
+  
+Scenario: view the commercial info vendor form page
+  When I go to the commercialInfo page
+  Then I should see the following fields: Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID
+  And I should see the following buttons: Continue  
   
 Scenario: Dropdown equipment rentals
   When I go to the food page
