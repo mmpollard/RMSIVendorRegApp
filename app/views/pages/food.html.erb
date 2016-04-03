@@ -3,6 +3,20 @@
     <link rel="stylesheet" href="/app/assets/stylesheets/application.css" type="text/css">
     <title>Food Vendor Registration Form</title>
   </head>
+    <!--This script reloads page on first access to render file upload correctly-->
+    <script type="text/javascript">
+      $(document).ready(function(){    
+      //Check if the current URL contains '#'
+        if(document.URL.indexOf("#")==-1){
+            // Set the URL to whatever it was plus "#".
+            url = document.URL+"#";
+            location = "#";
+    
+            //Reload the page
+            location.reload(true);
+        }
+      });
+  </script>
 <h1><center>Food Vendor Registration Form</center> </h1>
 &nbsp;
 &nbsp;
