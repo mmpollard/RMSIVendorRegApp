@@ -5,15 +5,18 @@
   </head>
     <!--This script reloads page on first access to render file upload correctly-->
     <script type="text/javascript">
-      $(document).ready(function(){    
+      $(document).ready(function(){
       //Check if the current URL contains '#'
         if(document.URL.indexOf("#")==-1){
+          var num = 1
+          if (num == 1) {
             // Set the URL to whatever it was plus "#".
             url = document.URL+"#";
             location = "#";
-    
+            num = 2
             //Reload the page
             location.reload(true);
+          }
         }
       });
   </script>
