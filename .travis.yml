@@ -1,6 +1,10 @@
 language: ruby
 rvm:
  - "2.2.2"
+ 
+addons:
+    code_climate:
+        repo_token: ee1be2e33de94a5a554fd83b6873adfe41421e9456235b2e621e6d299bdc2f1f
  #- rbx  <--this was failing, may need to uncomment depending on gabe's feedback
  
 # uncomment this line if your project needs to run something other than `rake`:
