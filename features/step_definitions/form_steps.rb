@@ -11,3 +11,6 @@ When /I should see the following (.*): (.*)/ do |inputtype, fieldlist|
     end
   end
 end
+Then /^the ([^"]*) of "([^"]*)" should be "([^"]*)"$/ do |arg1, arg2, arg3|
+   #Implement ME
+end
