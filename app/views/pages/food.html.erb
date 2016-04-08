@@ -3,20 +3,22 @@
     <link rel="stylesheet" href="/app/assets/stylesheets/application.css" type="text/css">
     <title>Food Vendor Registration Form</title>
   </head>
-    <!--This script reloads page on first access to render file upload correctly-->
-    <script type="text/javascript">
-      $(document).ready(function(){    
-      //Check if the current URL contains '#'
-        if(document.URL.indexOf("#")==-1){
-            // Set the URL to whatever it was plus "#".
-            url = document.URL+"#";
-            location = "#";
-    
-            //Reload the page
-            location.reload(true);
-        }
-      });
+  <script type='text/javascript'>
+    (function()
+    {
+      if( window.localStorage )
+      {
+        if( !localStorage.getItem( 'firstLoad' ) )
+        {
+          localStorage[ 'firstLoad' ] = true;
+          window.location.reload();
+        }  
+        else
+          localStorage.removeItem( 'firstLoad' );
+      }
+    })();
   </script>
+
 <h1><center>Food Vendor Registration Form</center> </h1>
 &nbsp;
 &nbsp;
@@ -167,11 +169,11 @@
         </div>
         <div class="form-group">
           <label class="control-label">Copy of contract for commercial kitchen used to prepare food:</label>
-          <input id="input-7" name="input7[]" multiple type="file" class="file file-loading" data-allowed-file-extensions='["pdf", "doc"]'>
+          <input id="input-8" name="input8[]" multiple type="file" class="file file-loading" data-allowed-file-extensions='["pdf", "doc"]'>
         </div>
         <div class="form-group">
           <label class="control-label">DD214</label>
-          <input id="input-7" name="input7[]" multiple type="file" class="file file-loading" data-allowed-file-extensions='["pdf", "doc"]'>
+          <input id="input-9" name="input9[]" multiple type="file" class="file file-loading" data-allowed-file-extensions='["pdf", "doc"]'>
         </div>  
             
         <div class="form-group">        
