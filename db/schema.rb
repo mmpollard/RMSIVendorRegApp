@@ -11,29 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160411023051) do
+ActiveRecord::Schema.define(version: 20160411035621) do
 
   create_table "forms", force: :cascade do |t|
-    t.string   "orgtype"
-    t.string   "name"
-    t.string   "user"
-    t.string   "email"
-    t.string   "address"
-    t.string   "city"
-    t.string   "zip"
-    t.string   "busphone"
-    t.string   "cell"
-    t.string   "website"
-    t.string   "busID"
-    t.string   "numTables"
-    t.string   "numbrellas"
-    t.string   "numChairs"
-    t.string   "numTents"
-    t.string   "resaleNum"
-    t.string   "product"
-    t.string   "taxID"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "orgtype"
+    t.string "name"
+    t.string "user"
+    t.string "email"
+    t.string "address"
+    t.string "city"
+    t.string "zip"
+    t.string "busphone"
+    t.string "cell"
+    t.string "website"
+    t.string "busID"
+    t.string "numTables"
+    t.string "numbrellas"
+    t.string "numChairs"
+    t.string "numTents"
+    t.string "resaleNum"
+    t.string "product"
+    t.string "taxID"
   end
 
 end

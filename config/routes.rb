@@ -1,19 +1,20 @@
 Rails.application.routes.draw do
+  resources :forms
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   
   resources :forms
   
-  root 'pages#home'
+  root 'forms#home'
   
-  get '/food' => 'pages#food'
+  get '/food' => 'forms#food'
   
-  get '/commercial' => 'pages#commercial'
+  get '/commercial' => 'forms#commercial'
   
-  get '/retail' => 'pages#retail'
+  get '/retail' => 'forms#retail'
   
-  get '/nonprofit' => 'pages#nonprofit'
+  get '/nonprofit' => 'forms#nonprofit'
   
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
