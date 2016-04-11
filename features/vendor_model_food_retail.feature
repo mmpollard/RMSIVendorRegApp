@@ -67,6 +67,7 @@ Scenario: Create retail vendor model
     And the busphone of "Cool company" should be "2222222222" 
     And the cell of "Cool company" should be "3333333333" 
     And the website of "Cool company" should be "www.frat.org"
+    And the resaleNum of "Cool company" should be "12345"
     And the busID of "Cool company" should be "12321"
     And the product of "Cool company" should be "fraternal items" 
     And the numTables of "Cool company" should be "0"
