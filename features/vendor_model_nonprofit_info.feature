@@ -4,7 +4,7 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
   
   Scenario: Create non-profit vendor model
     Given I am on the nonprofit page
-    And I fill in "Contact Name" with "John Doe" 
+    And I fill in "Contact name" with "John Doe" 
     And I fill in "Address" with "123 Easy St."
     And I fill in "City" with "Anytown"
     And I fill in "Zip Code" with "69420"
@@ -16,7 +16,7 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
     And I fill in "Tax ID" with "12321"
     And I fill in "Product(s) to sell/service to provide" with "conalingus"
     And I choose "information"
-    And I press "Continue"
+    And I press "Create Form"
     Then the user of "Cool company" should be "John Doe"
     And the address of "Cool company" should be "123 Easy St."
     And the city of "Cool company" should be "Anytown"
