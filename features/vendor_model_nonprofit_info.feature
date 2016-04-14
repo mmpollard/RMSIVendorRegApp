@@ -4,19 +4,19 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
   
   Scenario: Create non-profit vendor model
     Given I am on the nonprofit page
-    And I fill in "Contact Name" with "John Doe" 
-    And I fill in "Address" with "123 Easy St."
-    And I fill in "City" with "Anytown"
-    And I fill in "Zip Code" with "69420"
-    And I fill in "Organization Name" with "Cool company"
-    And I fill in "Email" with "cc@gmail.com" 
-    And I fill in "Business Phone" with "2222222222" 
-    And I fill in "Cell Phone" with "3333333333" 
-    And I fill in "Website" with "www.frat.org"
-    And I fill in "Tax ID" with "12321"
-    And I fill in "Product(s) to sell/service to provide" with "conalingus"
-    And I choose "information"
-    And I press "Continue"
+    And I fill in "form[user]" with "John Doe" 
+    And I fill in "form[address]" with "123 Easy St."
+    And I fill in "form[city]" with "Anytown"
+    And I fill in "form[zip]" with "69420"
+    And I fill in "form[name]" with "Cool company"
+    And I fill in "form[email]" with "cc@gmail.com" 
+    And I fill in "form[busphone]" with "2222222222" 
+    And I fill in "form[cell]" with "3333333333" 
+    And I fill in "form[website]" with "www.frat.org"
+    And I fill in "form[taxID]" with "12321"
+    And I fill in "form[product]" with "conalingus"
+    And I choose "orgtype_info"
+    And I press "Create Form"
     Then the user of "Cool company" should be "John Doe"
     And the address of "Cool company" should be "123 Easy St."
     And the city of "Cool company" should be "Anytown"
@@ -32,12 +32,12 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
     And the numChairs of "Cool company" should be "0"
     And the numbrellas of "Cool company" should be "0"
     And the numTents of "Cool company" should be "0"
-    And the npType of "Cool company" should be "Information"
+    And the npType of "Cool company" should be "information"
 
   Scenario: Cant create nonprofit vendor if required fields not completed (Sad Path)
     Given I am on the nonprofit page
-    And I fill in "Contact Name" with "John Doe"
-    And I press "Continue"
+    And I fill in "form[user]" with "John Doe"
+    And I press "Create Form"
     Then I should see "Missing Fields"
 
   Scenario: Create commercial info vendor model
