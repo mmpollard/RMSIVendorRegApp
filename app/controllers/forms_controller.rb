@@ -10,6 +10,11 @@ class FormsController < ApplicationController
   # GET /forms/1
   # GET /forms/1.json
   def show
+    if @form.formtype == 'nonprofit'
+      nonprofit
+    elsif @form.formtype == 'food'
+      food
+    end
   end
 
   # GET /forms/new
@@ -22,8 +27,8 @@ class FormsController < ApplicationController
   end
   
   def form_params
-    params.require(:form).permit!(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
-      :taxID, :busID, :product, :orgtype, :numChairs, :numTables, :numbrellas, :numTents)
+    params.require(:form).permit(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
+      :taxID, :busID, :product, :orgtype, :numChairs, :numTables, :numbrellas, :numTents, :formtype)
   end
 
   # POST /forms
@@ -31,25 +36,11 @@ class FormsController < ApplicationController
   def create
     # Might want to figure out how to just call Form.new(form_params), was getting error with that approach initially
     if @form.nil?
-      @form = Form.new()
+      unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(form_params)
+      session[:form_params] = unlocked_params
+      @form = Form.new(unlocked_params)
+      #@form = Form.new()
     end
-    @form.name = params[:form][:name]
-    @form.user = params[:form][:user]
-    @form.email = params[:form][:email]
-    @form.address = params[:form][:address]
-    @form.city = params[:form][:city]
-    @form.zip = params[:form][:zip]
-    @form.busphone = params[:form][:busphone]
-    @form.cell = params[:form][:cell]
-    @form.website = params[:form][:website]
-    @form.taxID = params[:form][:taxID]
-    @form.busID = params[:form][:busID]
-    @form.product = params[:form][:product]
-    @form.orgtype = params[:orgtype]
-    @form.numChairs = params[:numChairs]
-    @form.numTables = params[:numTables]
-    @form.numbrellas = params[:numbrellas]
-    @form.numTents = params[:numTents]
     
     generate_csv(@form)
     
@@ -58,7 +49,7 @@ class FormsController < ApplicationController
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else
-        format.html { render :new }
+        format.html { render :nonprofit}
         format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
@@ -79,7 +70,21 @@ class FormsController < ApplicationController
   end
   
   def nonprofit
-    @form = Form.new
+    if session[:form_params]
+      @form = Form.new(session[:form_params])
+    else
+      @form = Form.new
+      @form.formtype = 'nonprofit'
+    end
+  end
+    
+  def food
+    if session[:form_params]
+      @form = Form.new(session[:form_params])
+    else
+      @form = Form.new
+      @form.formtype = 'food'
+    end
   end
 
   # DELETE /forms/1

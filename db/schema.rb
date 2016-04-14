@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20160411035621) do
     t.string "resaleNum"
     t.string "product"
     t.string "taxID"
+    t.string "formtype"
   end
 
 end

@@ -1,6 +1,6 @@
 class CreateForms < ActiveRecord::Migration
   def change
-      create_table "forms", force: :cascade do |t|
+    create_table "forms", force: :cascade do |t|
     t.string   "orgtype"        
     t.string   "name"       
     t.string   "user"
@@ -19,6 +19,7 @@ class CreateForms < ActiveRecord::Migration
     t.string   "resaleNum"
     t.string   "product"
     t.string   "taxID"
+    t.string   "formtype"
     # t.text     "description"
     # t.datetime "release_date"
     # t.datetime "created_at"
