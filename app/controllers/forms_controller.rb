@@ -16,6 +16,8 @@ class FormsController < ApplicationController
       food
     elsif @form.formtype == 'commercial'
       commercial
+    elsif @form.formtype == 'retailArtisan'
+      retailArtisan
     end
   end
 
@@ -97,6 +99,15 @@ class FormsController < ApplicationController
       @form.formtype = 'food'
     end
   end
+  
+  def retailArtisan
+    if session[:form_params]
+      @form = Form.new(session[:form_params])
+    else
+      @form = Form.new
+      @form.formtype = 'retailArtisan'
+    end
+  end    
 
   # DELETE /forms/1
   # DELETE /forms/1.json
