@@ -41,7 +41,7 @@ class FormsController < ApplicationController
     # Might want to figure out how to just call Form.new(form_params), was getting error with that approach initially
     if @form.nil?
       unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(form_params)
-      session[:form_params] = unlocked_params
+      session[:form_params] = nil
       @form = Form.new(unlocked_params)
       #@form = Form.new()
     end
@@ -53,7 +53,18 @@ class FormsController < ApplicationController
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else
-        format.html { render :nonprofit}
+        if params[:formtype] == 'nonprofit'
+          format.html { render :nonprofit}
+        elsif params[:formtype] == 'food'
+          format.html { render :food}
+        elsif params[:formtype] == 'retail'
+          format.html {render :retail}
+        else
+          format.html {render :commercial}
+        end
+        
+        #This line doesn't do anything in the current environment. We should possibly
+        #have form.errors pop up as a warning message or something...
         format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
@@ -78,8 +89,8 @@ class FormsController < ApplicationController
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'nonprofit'
     end
+    @form.formtype = 'nonprofit'
   end
     
   def food
@@ -87,8 +98,8 @@ class FormsController < ApplicationController
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'food'
     end
+      @form.formtype = 'food'
   end
   
   def commercial
@@ -105,8 +116,8 @@ class FormsController < ApplicationController
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'retail'
     end
+      @form.formtype = 'retail'
   end    
 
   # DELETE /forms/1

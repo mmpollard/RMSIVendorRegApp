@@ -69,6 +69,7 @@
   <%= select_tag :numTents, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
   <%= label_tag("10'x10' Food Service Tent ($110)") %>  <br/>
 
+  <%= hidden_field_tag(:formtype, "commercial") %>
   
   <div class="actions" align="left">
     <%= f.submit %>
