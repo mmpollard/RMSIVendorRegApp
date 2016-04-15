@@ -12,6 +12,7 @@ class CreateForms < ActiveRecord::Migration
     t.string   "cell"
     t.string   "website"
     t.string   "busID"
+    t.string   "permitNum"
     t.string   "numTables"
     t.string   "numbrellas"
     t.string   "numChairs"
