@@ -16,8 +16,8 @@ class FormsController < ApplicationController
       food
     elsif @form.formtype == 'commercial'
       commercial
-    elsif @form.formtype == 'retailArtisan'
-      retailArtisan
+    elsif @form.formtype == 'retail'
+      retail
     end
   end
 
@@ -32,7 +32,7 @@ class FormsController < ApplicationController
   
   def form_params
     params.require(:form).permit(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
-      :taxID, :busID, :product, :orgtype, :numChairs, :numTables, :numbrellas, :numTents, :formtype)
+      :taxID, :busID, :product, :orgtype, :permitNum, :numChairs, :numTables, :numbrellas, :numTents, :formtype)
   end
 
   # POST /forms
@@ -100,12 +100,12 @@ class FormsController < ApplicationController
     end
   end
   
-  def retailArtisan
+  def retail
     if session[:form_params]
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'retailArtisan'
+      @form.formtype = 'retail'
     end
   end    
 
