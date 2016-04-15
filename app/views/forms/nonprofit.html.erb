@@ -60,16 +60,14 @@
   </div>
   
   <div class="field">
-    <center>
     <%= label_tag("Non-Profit Organization Type") %> <br/>
     <%= radio_button_tag(:orgtype, "sales", false, :id => "orgtype_sales") %>
     <%= label_tag("Sales") %> <br/>
     <%= radio_button_tag(:orgtype, "information", false, :id => "orgtype_info") %>
     <%= label_tag("Information") %> <br/>
-    </center>
   </div>
   
-  <label>Equipment Rental: </label><br/>
+  <label> Equipment Rental: </label><br/>
   <%= select_tag :numTables, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %>
   <%= label_tag("6' Table ($10)") %> <br/>
   <%= select_tag :numChairs, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
@@ -84,5 +82,5 @@
   <div class="actions" align="left">
     <%= f.submit %>
   </div>
- 
+  
 <% end %>

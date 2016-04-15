@@ -4,6 +4,8 @@
 &nbsp;
 
 <%= form_for(@form) do |f| %>
+
+  <%= hidden_field_tag(:formtype, "retail") %>
   
   <div class="field">
     <label class="control-label col-sm-2" for="oname">Organization Name:</label>
@@ -74,8 +76,6 @@
   <%= label_tag("11' Market Umbrella ($50)") %> <br/>
   <%= select_tag :numTents, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
   <%= label_tag("10'x10' Food Service Tent ($110)") %>  <br/>
-
-  <%= hidden_field_tag(:formtype, "retail") %>
   
   <div class="actions" align="left">
     <%= f.submit %>
