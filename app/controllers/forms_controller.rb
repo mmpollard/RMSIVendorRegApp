@@ -96,7 +96,7 @@ class FormsController < ApplicationController
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'food'
+      @form.formtype = 'commercial'
     end
   end
   
