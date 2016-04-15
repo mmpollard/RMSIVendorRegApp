@@ -21,8 +21,7 @@ Scenario: view the nonprofit vendor form page
   
 Scenario: view the commercial info vendor form page
   When I go to the commercialInfo page
-  Then I should see the following fields: Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID
-  And I should see the following buttons: Continue  
+  Then I should see the following fields: Organization Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID 
   
 Scenario: Dropdown equipment rentals
   When I go to the food page
