@@ -1,10 +1,10 @@
 <!--<h1><center><%= @greeting %></center></h1> -->
-<h1><center>Non-Profit Vendor Registration Form</center> </h1>
+<h1><center>Food Vendor Registration Form</center> </h1>
 &nbsp;
 &nbsp;
 <%= form_for(@form) do |f| %>
 
-  <%= hidden_field_tag(:formtype, "food") %>
+  <%= f.hidden_field(:formtype, :value => 'food') %>
   
   <% if @form.errors.any? %>
     <div id="error_explanation">
@@ -76,10 +76,7 @@
     <%= f.text_field :product %>
   </div>
   
-  <div class="field">
-    <label class="control-label col-sm-2" for="oname">tester:</label>
-    <%= f.text_field :formtype %>
-  </div>
+  
   
   
   <label>Equipment Rental (Optional): </label><br/>
@@ -113,7 +110,6 @@
   
   <br>
   <br>
-  
   <%= hidden_field_tag :DD214_file_name %>
   <div class="field">
     <label class="control-label col-sm-2" for="oname">DD214</label>

@@ -14,6 +14,9 @@ class FormsController < ApplicationController
       nonprofit
     elsif @form.formtype == 'food'
       food
+      send_data(@form.kc_file_contents,
+        type: @form.kc_content_type,
+        filename: @form.kc_filename)
     elsif @form.formtype == 'commercial'
       commercial
     elsif @form.formtype == 'retail'
@@ -31,11 +34,14 @@ class FormsController < ApplicationController
   end
   
   def form_params
-    params.require(:form).permit(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
-      :taxID, :busID, :product, :orgtype, :permitNum, :numChairs, :numTables, :numbrellas, :numTents, 
-      :formtype, :DD214, :kitchen_contract, :facility_op_form)
+    params.require(:form, :formtype).permit(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
+      :taxID, :busID, :product, :permitNum, :numChairs, :numTables, :numbrellas, :numTents, 
+      :formtype, :kitchen_contract, :DD214, :facility_op_form)
   end
-
+  
+  
+  def facility_op_form_params
+  end
   # POST /forms
   # POST /forms.json
   def create
@@ -44,25 +50,13 @@ class FormsController < ApplicationController
       unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(form_params)
       session[:form_params] = nil
       @form = Form.new(unlocked_params)
-      params[:form_params] = unlocked_params
     end
     
     generate_csv(@form)
     
     respond_to do |format|
       #Food form file upload validation performed first, before attempting to save at the model level
-      if params[:formtype] == 'food'
-        if params[:DD214_file_name]
-          @form.errors.add(:DD214_file_name, "must not be blank")
-        end
-        if params[:kitchen_contract_file_name] == ""
-          @form.errors.add(:kitchen_contract_file_name, "must not be blank")
-        end
-        if params[:facility_op_form_file_name] == ""
-          @form.errors.add(:facility_op_form_file_name, "must not be blank")
-        end
-        format.html {render :food}
-      elsif @form.save
+      if @form.save
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else

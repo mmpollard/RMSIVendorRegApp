@@ -4,6 +4,8 @@
 &nbsp;
 <%= form_for(@form) do |f| %>
 
+  <%= f.hidden_field(:formtype, :value => "nonprofit") %>
+
   <% if @form.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@form.errors.count, "missing field") %> prohibited this form from being saved:</h2>

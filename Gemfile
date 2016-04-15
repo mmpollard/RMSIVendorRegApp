@@ -19,6 +19,7 @@ gem 'autoprefixer-rails'
 gem 'activesupport-json_encoder', '~> 1.1'
 #using paperclip for file upload
 gem "paperclip", "~> 4.2"
+
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
