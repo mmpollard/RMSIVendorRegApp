@@ -6,6 +6,20 @@
 
   <%= hidden_field_tag(:formtype, "food") %>
   
+  <% if @form.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@form.errors.count, "missing field") %> prohibited this form from being submitted:</h2>
+
+      <ul>
+      <% @form.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= hidden_field_tag(:formtype, "food") %>
+  
   <div class="field">
     <label class="control-label col-sm-2" for="oname">Organization Name:</label>
     <%= f.text_field :name %>
@@ -62,19 +76,28 @@
     <%= f.text_field :product %>
   </div>
   
+  <div class="field">
+    <label class="control-label col-sm-2" for="oname">tester:</label>
+    <%= f.text_field :formtype %>
+  </div>
   
-  <label>Equipment Rental: </label><br/>
+  
+  <label>Equipment Rental (Optional): </label><br/>
   <%= select_tag :numTables, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %>
-  <%= label_tag("6' Table ($10)") %> <br/>
+  <%= label_tag(:table, "6' Table ($10)") %> <br/>
   <%= select_tag :numChairs, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
-  <%= label_tag("Folding Chair ($5)") %> <br/>
+  <%= label_tag(:chair, "Folding Chair ($5)") %> <br/>
   <%= select_tag :numbrellas, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
-  <%= label_tag("11' Market Umbrella ($50)") %> <br/>
+  <%= label_tag(:umbrella, "11' Market Umbrella ($50)") %> <br/>
   <%= select_tag :numTents, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
-  <%= label_tag("10'x10' Food Service Tent ($110)") %>  <br/>
+  <%= label_tag(:tent, "10'x10' Food Service Tent ($110)") %>  <br/>
   
     <br>
+  <div class="form-group"> 
+  Registration Forms
+  </div>
   
+  <%= hidden_field_tag :facility_op_form_file_name %>
   <div class="field">
     <label class="control-label col-sm-2" for="oname">Food facility operator form:</label>
     <%= f.file_field :facility_op_form %>
@@ -82,6 +105,7 @@
   
   <br>
   
+  <%= hidden_field_tag :kitchen_contract_file_name %>
   <div class="field">
     <label class="control-label col-sm-2" for="oname">Copy of contract for commercial kitchen used to prepare food:</label>
     <%= f.file_field :kitchen_contract %>
@@ -90,6 +114,7 @@
   <br>
   <br>
   
+  <%= hidden_field_tag :DD214_file_name %>
   <div class="field">
     <label class="control-label col-sm-2" for="oname">DD214</label>
     <%= f.file_field :DD214 %>
@@ -98,7 +123,5 @@
   <div class="actions" align="left">
     <%= f.submit %>
   </div>
-  
-  <%= hidden_field_tag(:formtype, "food") %>
  
 <% end %>

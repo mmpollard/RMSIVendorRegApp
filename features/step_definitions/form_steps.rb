@@ -3,11 +3,13 @@ When /I should see the following (.*): (.*)/ do |inputtype, fieldlist|
   #   iterate over the ratings and reuse the "When I check..." or
   #   "When I uncheck..." steps in lines 89-95 of web_steps.rb
   fields = fieldlist.split(", ")
-  fields.each do |f|
-    if page.respond_to? :should
-        page.should have_content(f)
-    else
-        assert page.has_content?(f)
+  if inputtype == 'buttons'
+    fields.each do |f|
+      page.should have_selector("input[type=submit][value='Create Form']")
+    end
+  else
+    fields.each do |f|
+      page.should have_content(f)
     end
   end
 end

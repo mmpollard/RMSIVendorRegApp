@@ -15,6 +15,8 @@ gem 'coffee-rails', '~> 4.1.0'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'autoprefixer-rails'
 
+#using json encoder gem to fix encoding error (from ASCII-8BIT to UTF-8) caused by file upload
+gem 'activesupport-json_encoder', '~> 1.1'
 #using paperclip for file upload
 gem "paperclip", "~> 4.2"
 # Use jquery as the JavaScript library

@@ -38,7 +38,7 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
     Given I am on the nonprofit page
     And I fill in "form[user]" with "John Doe"
     And I press "Create Form"
-    Then I should see "Missing Fields"
+    Then I should see "missing fields"
 
   Scenario: Create commercial info vendor model
     Given I am on the commercialInfo page
@@ -74,6 +74,6 @@ Feature: Create Vendor Models for Nonprofit and Commercial Information vendors
     Given I am on the commercialInfo page
     And I fill in "form[user]" with "John Doe"
     And I press "Create Form"
-    Then I should see "Missing Fields"
+    Then I should see "missing fields"
 
   

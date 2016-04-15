@@ -32,7 +32,8 @@ class FormsController < ApplicationController
   
   def form_params
     params.require(:form).permit(:name, :user, :email, :address, :city, :zip, :busphone, :cell, :website,
-      :taxID, :busID, :product, :orgtype, :permitNum, :numChairs, :numTables, :numbrellas, :numTents, :formtype)
+      :taxID, :busID, :product, :orgtype, :permitNum, :numChairs, :numTables, :numbrellas, :numTents, 
+      :formtype, :DD214, :kitchen_contract, :facility_op_form)
   end
 
   # POST /forms
@@ -43,13 +44,25 @@ class FormsController < ApplicationController
       unlocked_params = ActiveSupport::HashWithIndifferentAccess.new(form_params)
       session[:form_params] = nil
       @form = Form.new(unlocked_params)
-      #@form = Form.new()
+      params[:form_params] = unlocked_params
     end
     
     generate_csv(@form)
     
     respond_to do |format|
-      if @form.save
+      #Food form file upload validation performed first, before attempting to save at the model level
+      if params[:formtype] == 'food'
+        if params[:DD214_file_name]
+          @form.errors.add(:DD214_file_name, "must not be blank")
+        end
+        if params[:kitchen_contract_file_name] == ""
+          @form.errors.add(:kitchen_contract_file_name, "must not be blank")
+        end
+        if params[:facility_op_form_file_name] == ""
+          @form.errors.add(:facility_op_form_file_name, "must not be blank")
+        end
+        format.html {render :food}
+      elsif @form.save
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else
@@ -62,13 +75,13 @@ class FormsController < ApplicationController
         else
           format.html {render :commercial}
         end
-        
         #This line doesn't do anything in the current environment. We should possibly
         #have form.errors pop up as a warning message or something...
         format.json { render json: @form.errors, status: :unprocessable_entity }
       end
     end
   end
+      
 
   # PATCH/PUT /forms/1
   # PATCH/PUT /forms/1.json

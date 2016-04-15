@@ -5,17 +5,17 @@ Feature: Create new vendor model
   Scenario: Create food vendor model
     Given I am on the homepage
     When I go to the food page
-    And I fill in "Contact Name" with "John Doe" 
-    And I fill in "Address" with "123 Easy St."
-    And I fill in "City" with "Anytown"
-    And I fill in "Zip Code" with "69420"
-    And I fill in "Organization Name" with "Cool company"
-    And I fill in "Email" with "cc@gmail.com" 
-    And I fill in "Business Phone" with "2222222222" 
-    And I fill in "Cell Phone" with "3333333333" 
-    And I fill in "Website" with "www.frat.org"
-    And I fill in "Business ID" with "12321"
-    And I press "Continue"
+    And I fill in "form[user]" with "John Doe" 
+    And I fill in "form[address]" with "123 Easy St."
+    And I fill in "form[city]" with "Anytown"
+    And I fill in "form[zip]" with "69420"
+    And I fill in "form[name]" with "Cool company"
+    And I fill in "form[email]" with "cc@gmail.com" 
+    And I fill in "form[busphone]" with "2222222222" 
+    And I fill in "form[cell]" with "3333333333" 
+    And I fill in "form[website]" with "www.frat.org"
+    And I fill in "form[busID]" with "12321"
+    And I press "Create Form"
     Then the user of "Cool company" should be "John Doe"
     And the address of "Cool company" should be "123 Easy St."
     And the city of "Cool company" should be "Anytown"
@@ -36,9 +36,9 @@ Feature: Create new vendor model
 Scenario: Cant create food vendor if required fields not completed (Sad Path)
     Given I am on the homepage
     When I go to the food page
-    And I fill in "Contact Name" with "John Doe"
-    And I press "Continue"
-    Then I should see "Missing Fields"
+    And I fill in "form[user]" with "John Doe"
+    And I press "Create Form"
+    Then I should see "missing fields"
 
 Scenario: Create retail vendor model
     Given I am on the retail page
@@ -78,4 +78,4 @@ Scenario: Cant create retail vendor if required fields not completed (Sad Path)
     When I go to the retail page
     And I fill in "form[user]" with "John Doe"
     And I press "Create Form"
-    Then I should see "Missing Fields"
+    Then I should see "missing fields"
