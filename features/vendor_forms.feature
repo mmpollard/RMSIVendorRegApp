@@ -12,8 +12,7 @@ Scenario: view the food vendor form page
 
 Scenario: view the retail vendor form page
   When I go to the retail page
-  Then I should see the following fields: Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID
-  And I should see the following buttons: Continue
+  Then I should see the following fields: Organization Name, Contact Name, Address, City, Zip Code, Business Phone, Cell Phone, Email, Website, Business ID, Resale Permit, Product(s)/Services
   
 Scenario: view the nonprofit vendor form page
   When I go to the nonprofit page
