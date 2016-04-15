@@ -13,6 +13,9 @@ When /I should see the following (.*): (.*)/ do |inputtype, fieldlist|
     end
   end
 end
+When /^I attach the file "([^"]*)"$/ do |file|
+#unimplemented
+end
 
 When /^(?:|I )select "([^"]*)" for equipment rentals from "([^"]*)"$/ do |value, field|
   @tempForm = Form.new
