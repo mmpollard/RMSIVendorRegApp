@@ -14,6 +14,8 @@ class FormsController < ApplicationController
       nonprofit
     elsif @form.formtype == 'food'
       food
+    elsif @form.formtype == 'commercial'
+      commercial
     end
   end
 
@@ -79,6 +81,15 @@ class FormsController < ApplicationController
   end
     
   def food
+    if session[:form_params]
+      @form = Form.new(session[:form_params])
+    else
+      @form = Form.new
+      @form.formtype = 'food'
+    end
+  end
+  
+  def commercial
     if session[:form_params]
       @form = Form.new(session[:form_params])
     else
