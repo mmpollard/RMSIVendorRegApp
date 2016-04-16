@@ -1,5 +1,5 @@
 class AddPNumToForm < ActiveRecord::Migration
   def change
-    add_column :forms, :permitNum, :string
+    #add_column :forms, :permitNum, :string
   end
 end
