@@ -63,3 +63,19 @@ end
 Then /^the ([^"]*) should receive a confirmation email containing the file "([^"]*)"$/ do |arg1, arg2|
   #Implement ME
 end
+
+Given a form is submitted successfully do
+  #implement
+end
+
+And /I use the email "([^"]*)"/ do |email|
+#implement
+end
+
+
+Then /as "([^"]*)", I should receive a confirmation at "([^"]*)"/ do |who, email|
+#implement
+end
+
+And /I should also be able to see their submission/ do 
+end
