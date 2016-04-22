@@ -59,3 +59,7 @@ end
 Then /^the ([^"]*) of "([^"]*)" in the csv should be "([^"]*)"$/ do |arg1, arg2, arg3|
    #Implement ME
 end
+
+Then /^the ([^"]*) should receive a confirmation email containing the file "([^"]*)"$/ do |arg1, arg2|
+  #Implement ME
+end
