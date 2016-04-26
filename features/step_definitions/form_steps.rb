@@ -64,8 +64,12 @@ Then /^the ([^"]*) should receive a confirmation email containing the file "([^"
   #Implement ME
 end
 
-Given a form is submitted successfully do
-  #implement
+Then(/^"([^"]*)", I should receive a confirmation at "([^"]*)"$/) do |arg1, arg2|
+  #Implement ME
+end
+
+Given(/^a form is submitted successfully$/) do
+  #Implement ME
 end
 
 And /I use the email "([^"]*)"/ do |email|
