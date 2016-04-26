@@ -57,6 +57,14 @@ class FormsController < ApplicationController
     respond_to do |format|
       #Food form file upload validation performed first, before attempting to save at the model level
       if @form.save
+        mg_client = Mailgun::Client.new Rails.application.secrets.api_key
+        message_params = {
+                          :from    => Rails.application.secrets.username,
+                          :to      => "willdyoungs@gmail.com",
+                          :subject => 'Thank you for signing up with RMSI!',
+                          :text    => 'Your application has been recieved, and we will be in touch soon with next steps!'
+                        }
+        mg_client.send_message(Rails.application.secrets.domain, message_params)
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else
