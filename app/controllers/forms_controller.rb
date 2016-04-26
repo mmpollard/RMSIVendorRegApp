@@ -60,7 +60,7 @@ class FormsController < ApplicationController
         mg_client = Mailgun::Client.new Rails.application.secrets.api_key
         message_params = {
                           :from    => Rails.application.secrets.username,
-                          :to      => "willdyoungs@gmail.com",
+                          :to      => @form.email,
                           :subject => 'Thank you for signing up with RMSI!',
                           :text    => 'Your application has been recieved, and we will be in touch soon with next steps!'
                         }
