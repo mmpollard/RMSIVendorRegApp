@@ -5,7 +5,15 @@ class FormsController < ApplicationController
   # GET /forms.json
   def index
     @forms = Form.all
+    respond_to do |format|
+      format.html
+      format.csv do
+        headers['Content-Disposition'] = "attachment; filename=\"form-list\""
+        headers['Content-Type'] ||= 'text/csv'    
+      end
+    end
   end
+      
 
   # GET /forms/1
   # GET /forms/1.json
@@ -64,7 +72,8 @@ class FormsController < ApplicationController
                           :subject => 'Thank you for signing up with RMSI!',
                           :text    => 'Your application has been recieved, and we will be in touch soon with next steps!'
                         }
-        mg_client.send_message(Rails.application.secrets.domain, message_params)
+
+        #mg_client.send_message(Rails.application.secrets.domain_name, message_params)
         format.html { redirect_to @form, notice: 'Form was successfully created.' }
         format.json { render :submit, status: :created, location: @form }
       else
@@ -114,7 +123,7 @@ class FormsController < ApplicationController
     else
       @form = Form.new
     end
-      @form.formtype = 'food'
+    @form.formtype = 'food'
   end
   
   def commercial
@@ -122,8 +131,9 @@ class FormsController < ApplicationController
       @form = Form.new(session[:form_params])
     else
       @form = Form.new
-      @form.formtype = 'commercial'
+      
     end
+    @form.formtype = 'commercial'
   end
   
   def retail
@@ -132,7 +142,7 @@ class FormsController < ApplicationController
     else
       @form = Form.new
     end
-      @form.formtype = 'retail'
+    @form.formtype = 'retail'
   end    
 
   # DELETE /forms/1
