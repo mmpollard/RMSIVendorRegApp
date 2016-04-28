@@ -26,18 +26,18 @@ class Form < ActiveRecord::Base
       super
         if @kitchen_contract
           self.kc_filename = sanitize_filename(@kitchen_contract.original_filename)
-          self.kc_content_type = @kitchen_contract.kc_content_type
+          self.kc_content_type = @kitchen_contract.content_type
           self.kc_file_contents = @kitchen_contract.read
         end
         if @DD214
-          self.dd_filename = sanitize_filename(@kitchen_contract.original_filename)
-          self.dd_content_type = @kitchen_contract.dd_content_type
-          self.dd_file_contents = @kitchen_contract.read
+          self.dd_filename = sanitize_filename(@DD214.original_filename)
+          self.dd_content_type = @DD214.content_type
+          self.dd_file_contents = @DD214.read
         end
         if @facility_op_form
-          self.ff_filename = sanitize_filename(@kitchen_contract.original_filename)
-          self.ff_content_type = @kitchen_contract.ff_content_type
-          self.ff_file_contents = @kitchen_contract.read
+          self.ff_filename = sanitize_filename(@facility_op_form.original_filename)
+          self.ff_content_type = @facility_op_form.content_type
+          self.ff_file_contents = @facility_op_form.read
         end
     end
     private
