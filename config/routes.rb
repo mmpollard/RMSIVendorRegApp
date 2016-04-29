@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   
   get '/nonprofit' => 'forms#nonprofit'
   
+  get '/admin' => 'forms#admin'
+  
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
