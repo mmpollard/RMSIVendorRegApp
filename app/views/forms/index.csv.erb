@@ -1,5 +1,5 @@
-<%- headers = ['FormType', 'Name', 'User', 'Email', 'Address', 'City', 'Zip', 'Busphone', 'Cell', 'Website', 'TaxID', 'BusID', 'Product', 'PermitNum', 'NumChairs', 'NumTables', 'Numbrellas', 'NumTents', 'Kitchen_contract', 'DD214', 'Facility_op_form'] -%>
+<%- headers = ['Name', 'User', 'Email', 'Address', 'City', 'Zip', 'Busphone', 'Cell', 'Website', 'TaxID', 'BusID', 'Product', 'PermitNum', 'NumChairs', 'NumTables', 'Numbrellas', 'NumTents', 'Kitchen_contract', 'DD214', 'Facility_op_form'] -%>
 <%= CSV.generate_line headers %>
 <%- @forms.each do |form| -%>
-<%= CSV.generate_line([form.formtype, form.name, form.user, form.email, form.address, form.city, form.zip, form.busphone, form.cell, form.website, form.taxID, form.busID, form.product, form.permitNum, form.numChairs, form.numTables, form.numbrellas, form.numTents, form.kc_filename, form.dd_filename, form.ff_filename]) -%>
+<%= CSV.generate_line([form.name, form.user, form.email, form.address, form.city, form.zip, form.busphone, form.cell, form.website, form.taxID, form.busID, form.product, form.permitNum, form.numChairs, form.numTables, form.numbrellas, form.numTents, form.kc_filename, form.dd_filename, form.ff_filename]) -%>
 <%- end -%>
