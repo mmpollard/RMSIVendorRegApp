@@ -82,13 +82,13 @@
   </div>
   
   <label> Equipment Rental (Optional): </label><br/>
-  <%= select_tag :numTables, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %>
+  <%= f.select :numTables, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %>
   <%= label_tag("6' Table ($10)") %> <br/>
-  <%= select_tag :numChairs, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
+  <%= f.select :numChairs, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
   <%= label_tag("Folding Chair ($5)") %> <br/>
-  <%= select_tag :numbrellas, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
+  <%= f.select :numbrellas, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
   <%= label_tag("11' Market Umbrella ($50)") %> <br/>
-  <%= select_tag :numTents, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
+  <%= f.select :numTents, "<option>0</option> <option>1</option> <option>2</option> <option>3</option>".html_safe %> 
   <%= label_tag("10'x10' Food Service Tent ($110)") %>  <br/>
 
   <%= hidden_field_tag(:formtype, "nonprofit") %>
