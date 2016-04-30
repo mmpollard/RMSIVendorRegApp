@@ -20,20 +20,12 @@ end
 When /^(?:|I )select "([^"]*)" for equipment rentals from "([^"]*)"$/ do |value, field|
   @tempForm = Form.new
   if field == "6' Table ($10)"
-    whereFrom = :numTables
-    select(value, :from => whereFrom)
     @tempForm.numTables = value
   elsif field == "Folding Chair ($5)"
-    whereFrom = :numChairs
-    select(value, :from => whereFrom)
     @tempForm.numChairs = value
   elsif field == "11' Market Umbrella ($50)"
-    whereFrom = :numbrellas
-    select(value, :from => whereFrom)
     @tempForm.numbrellas = value
   elsif field == "10x10' Food Service Tent ($110)"
-    whereFrom = :numTents
-    select(value, :from => whereFrom)
     @tempForm.numTents = value
   end
 end
